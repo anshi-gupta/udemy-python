@@ -1,3 +1,4 @@
+
 def display_board(board):
     
     print(' ' + board[1] + ' | ' + board[2] + ' | ' + board[3])
@@ -21,8 +22,6 @@ def player_input():
         return 'O', 'X'
 
 # Taking the board list object, a marker ('X' or 'O'), at a desired position (number 1-9).
-
-#The board
 def place_marker(board, marker, position):
     board[position] = marker
 
@@ -127,3 +126,6 @@ while True:
 
     if not replay():
         break
+
+
+         
