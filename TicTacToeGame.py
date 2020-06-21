@@ -1,3 +1,6 @@
+
+position_list = []
+
 def display_board(board):
     
     print(' ' + board[1] + ' | ' + board[2] + ' | ' + board[3])
@@ -21,8 +24,6 @@ def player_input():
         return 'O', 'X'
 
 # Taking the board list object, a marker ('X' or 'O'), at a desired position (number 1-9).
-
-#The board
 def place_marker(board, marker, position):
     board[position] = marker
 
@@ -52,7 +53,7 @@ def space_check(board, position):
     board_position = ' '
     return board_position
 
-# To check if the board is full or not.
+# To check if the board is full or not
 def board_check(board):
     for i in range(1, 10):
         if space_check(board, i):
@@ -62,9 +63,13 @@ def board_check(board):
 # Asks for a player's next position (as a number 1-9) 
 def player_choice(board):
     position = 0
-    while position not in [1, 2, 3, 4, 5, 6, 7, 8, 9] or not space_check(board, position):
+    while position not in position_list or not space_check(board, position):
         position = int(input("Choose your position: "))
+    position_index = position_list.index(position)
+    position_list.pop(position_index)
     return position
+
+    
 
 
 # Asks the player if they want to play again 
@@ -76,6 +81,7 @@ print("Welcome to Tic Tac Toe!!!")
 
 while True:
     # Reset the board
+    position_list = [1, 2, 3, 4, 5, 6, 7, 8, 9]
     the_board = [' '] * 10
     player1_marker, player2_marker = player_input()
     turn = choose_first_player()
