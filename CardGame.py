@@ -31,6 +31,11 @@ class Deck():
   def deal_one(self):
     return self.all_cards.pop()
 
+new_deck = Deck()
+new_deck.shuffle()
+mycard = new_deck.deal_one()
+print(mycard)
+
 
 class Player():
   def __init__(self, name):
@@ -38,13 +43,27 @@ class Player():
     self.all_cards = []
 
   def remove_one(self):
-    pass
+    return self.all_cards.pop(0)
 
-  def all_cards(self, new_cards):
-    pass
+  def add_cards(self, new_cards):
+
+    # list of multiple card objects
+    if type(new_cards) == type([]):
+      self.all_cards.extend(new_cards)
+    else:
+      # For single card object
+      self.all_cards.append(new_cards)
 
   def __str__(self):
     return f'Player {self.name} has {len(self.all_cards)} cards.'
 
 new_player = Player("Avi")
+print(new_player)
+new_player.add_cards(mycard)
+print(new_player)
+print(new_player.all_cards[0])
+
+new_player.add_cards([mycard, mycard, mycard])
+print(new_player)
+new_player.remove_one()
 print(new_player)
