@@ -31,8 +31,20 @@ class Deck():
   def deal_one(self):
     return self.all_cards.pop()
 
-new_deck = Deck()
-new_deck.shuffle()
-mycard = new_deck.deal_one()
-print(mycard)
-print(len(new_deck.all_cards))
+
+class Player():
+  def __init__(self, name):
+    self.name = name
+    self.all_cards = []
+
+  def remove_one(self):
+    pass
+
+  def all_cards(self, new_cards):
+    pass
+
+  def __str__(self):
+    return f'Player {self.name} has {len(self.all_cards)} cards.'
+
+new_player = Player("Avi")
+print(new_player)
