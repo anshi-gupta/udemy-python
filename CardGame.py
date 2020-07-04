@@ -28,10 +28,12 @@ class Deck():
   
   def shuffle(self):
     random.shuffle(self.all_cards)
-
+  
+  def deal_one(self):
+    return self.all_cards.pop()
 
 new_deck = Deck()
-bottom_card = new_deck.all_cards[-1]
-print(bottom_card)
 new_deck.shuffle()
-print(new_deck.all_cards[-1])
+mycard = new_deck.deal_one()
+print(mycard)
+print(len(new_deck.all_cards))
