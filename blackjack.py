@@ -1,4 +1,4 @@
-
+﻿
 import random 
 
 suits =('Hearts', 'Diamonds', 'Spades', 'Clubs')
@@ -38,6 +38,37 @@ class Deck():
     single_card = self.deck.pop()
     return single_card
 
-test_deck = Deck()
-test_deck.shuffle()
-print(test_deck)
+class Hand():
+  def __init__(self):
+    self.cards = []         # start with an empty lists as we did in the Deck class
+    self.value = 0         # start with zero value
+    self.aces = 0          # add an attribute to keep track of aces
+
+  def add_card(self, card):
+    # card passed in
+    # from Deck.deal() --> single Card(suit, rank)
+    self.cards.append(card)
+    self.value += values[card.rank]
+
+    #track of aces
+    if card.rank == 'Ace':
+      self.aces += 1
+
+  def adjust_for_ace(self):
+
+    # IF TOTAL VALUE > 21 AND I STILL HAVE AN ACE
+    # THEN CHANGE MY ACE TO BE A 1 INSTEAD OF AN 11
+    while self.value > 21 and self.aces:
+      self.value -= 10
+      self.aces -= 1
+
+class Chips():
+  def __init__(self, total = 100):
+    self.total = total
+    self.bet = 0
+
+  def win_bet(self):
+    self.total += self.bet
+
+  def lose_bet(self):
+    self.total -= self.bet
