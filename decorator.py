@@ -11,3 +11,10 @@ def func_needs_decorator():
 
 decorated_func = new_decorator(func_needs_decorator)
 decorated_func()
+
+# Using @ 
+@new_decorator
+def func_needs_decorator_again():
+  print("I want to be decorated again")
+
+func_needs_decorator_again()
