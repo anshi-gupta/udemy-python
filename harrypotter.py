@@ -12,13 +12,13 @@ for char in f.read():
 for word in no_punc.split():
     if word[0] == "'":
       first = word[1:]
-      z = z + first + " "
+      z = z + first.lower() + " "
     elif word[-1] == "'":
       last = word[:-1]
-      z = z + last + " "
+      z = z + last.lower() + " "
     else:
       no_apostrophe = word
-      z = z + no_apostrophe + " "
+      z = z + no_apostrophe.lower() + " "
 
 for word_new in z.split():
   if word_new not in word_count:
@@ -29,4 +29,5 @@ for word_new in z.split():
 
 for k,v in word_count.items():
   print(k, v)
+
 f.close()
