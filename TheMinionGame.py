@@ -1,41 +1,25 @@
-﻿## Kevin and Stuart want to play the 'The Minion Game'.
-    ## Game Rules
-        ## Both players are given the same string, S.
-        ## Both players have to make substrings using the letters of the string S.
-        ## Stuart has to make words starting with consonants.
-        ## Kevin has to make words starting with vowels.
-        ## The game ends when both players have made all possible substrings.
+﻿# Count which player got the highest score and print the name of the player and his score.
+string = input("Enter a word: ")
+vowels = 'AEIOU'
 
-        ## Scoring
-        ## A player gets +1 point for each occurrence of the substring in the string S.
+# counts the number of substring starting from a vowel
+# The player 1 is Kevin
+Kev_str_count = 0
 
-        ## For Example:
-        ## String S= BANANA
-        ## Kevin's vowel beginning word = ANA
-        ## Here, ANA occurs twice in BANANA. Hence, Kevin will get 2 Points.
+# counts the number of substring starting from a consonant
+# The player 2 is Stuart
+St_str_count = 0
 
-s = "BANANA"
-vowel = {}
-cons = {}
-i = 0
 
-# For single letter count
-for letter in s:
-    if s[i] == 'A' or s[i] == 'E' or s[i] == 'I' or s[i] == 'O' or s[i] == 'U':
-        if letter not in vowel:
-            vowel[letter] = 1
-        else:
-            vowel[letter] += 1
-        i += 1
+for i in range(len(string)):
+    if string[i].lower() in vowels.lower():
+        Kev_str_count += (len(string)-i)
     else:
-        if letter not in cons:
-            cons[letter] = 1
-        else:
-            cons[letter] += 1
-        i += 1
+        St_str_count += (len(string)-i)
 
-for k1, v1 in cons.items():
-    print(k1, v1)
-for k2, v2 in vowel.items():
-    print(k2, v2)
-
+if Kev_str_count > St_str_count:
+    print ("Kevin", kevsc)
+elif Kev_str_count < St_str_count:
+    print ("Stuart", St_str_count)
+else:
+    print ("Draw")
