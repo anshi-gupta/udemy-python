@@ -5,21 +5,19 @@
 
 # Your task is to compute how much money Raghu earned.
 
-# Enter your code here. Read input from STDIN. Print output to STDOUT
-X = int(input())
-sizes = list(map(int, input().strip().split()))
-N = int(input())
+from collections import Counter
+x = int(input())
+sizes = Counter(list(map(int, input().strip().split())))
+n = int(input())
 total_money = 0
-for _ in range(N):
+for _ in range(n):
     cust = input()
     size = int(cust.split()[0])
     money = int(cust.split()[1])
-    if size in sizes:
+    if sizes[size]:
         total_money += money
-        i = sizes.index(size)
-        sizes.pop(i)
+        sizes[size] -= 1
 
 print(total_money)
-
 
     
